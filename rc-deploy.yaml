@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+ name: rc-deploy
+spec:
+ replicas: 2
+ template:
+  metadata:
+   name: creating_pods
+   labels:
+    app: my-web-app
+  spec:
+   containers:
+   - name: my-container-1
+     image: khannashiv/my-web-image
+     ports:
+     - containerPort: 80
+ selector:
+  app: my-web-app
